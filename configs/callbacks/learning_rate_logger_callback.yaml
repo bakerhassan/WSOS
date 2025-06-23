@@ -1,0 +1,2 @@
+learner_rate:
+  _target_: src.callbacks.learning_rate_logger_callback.LearningRateLoggerCallback

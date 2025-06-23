@@ -1,0 +1,11 @@
+_target_: src.data.sss_datamodule.SSSDataModule
+
+data_dir: /lustre/cniel/data/AI4Shipwrecks
+background_classifier:
+order_background_labels: False
+im_size: [64,64]
+crop_size: [128,128]
+train_val_test_split: [ .7, .2, .1 ]
+num_workers: 4
+pin_memory: False
+batch_size: 100

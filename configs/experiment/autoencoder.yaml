@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: mnist
+  - override /model: ae
+
+trainer:
+  devices: 1
+  max_epochs: 200
+
+  
+model:
+  clusters_list: [2,3,4,5,6,7]
+  net:
+    input_channels: 1
+  #WARNING: You need to go back to the ae.yaml file in the model and change the testing_dataset. Due to hydra limitations this override won't work.
+  testing_dataset:
+#    _target_: src.data.fgbg_datamodule.ForegroundTextureDataModule
+#    data_dir: ${paths.data_dir}
+#    batch_size: 32
+#    train_val_test_split: [ .7, .2, .1 ]
+#    num_workers: 4
+#    pin_memory: False
+#    texture_dir: ${paths.data_dir}/textures
+#    dataset_type: MNIST
+#    im_size: [ 64,64 ]
+#    random_resizing_shifting: False
+#    order_background_labels: False
+#    unify_fg_objects_intensity: False
+#    background_classifier:
+
+data:
+  batch_size: 700
+  background_classifier:
+  order_background_labels: False
+
+#ckpt_path: /lustre/cniel/onr/logs/train/runs/2024-05-13_14-35-59/checkpoints/last.ckpt

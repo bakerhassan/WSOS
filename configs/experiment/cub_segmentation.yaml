@@ -1,0 +1,37 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: birds
+  - override /model: default
+
+trainer:
+  devices: 1
+  max_epochs: 1000
+
+data:
+  batch_size: 400
+  data_dir: /lustre/cniel/data/CUB_200_2011/CUB_200_2011/images
+  mask_dir: /lustre/cniel/data/segmentations/
+  background_images_dir:
+  #CL for 64x64
+  background_classifier: /lustre/cniel/onr/logs/eval/runs/2024-06-26_15-46-20/ae_gmm/15.pt
+  
+  order_background_labels: true
+  im_size: [ 64,64 ]
+  
+model:
+  net:
+    input_channels: 3
+  divergence_loss: ebsw
+  scheduler:
+    patience: 100
+  sw_encoder:
+  sw_encoder_checkpoint: 
+  #sw_encoder: 
+  #   _target_: src.models.components.ae.AE
+  #   input_channels: 3
+  #   input_dim: ${eval:'${data.im_size[0]}'}
+  #   latent_dim: 200
+  #sw_encoder_checkpoint: /lustre/cniel/onr/logs/train/runs/2024-07-09_20-18-29/checkpoints/epoch_340.ckpt
+  

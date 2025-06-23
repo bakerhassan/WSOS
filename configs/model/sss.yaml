@@ -1,0 +1,34 @@
+_target_: src.models.sss_module.SSSLightningModule
+
+embedding_dim: ${eval:'${data.im_size[0]} ** 2'}
+original_crop_size: ${eval:'${data.crop_size}'}
+#embedding_dim: 1600
+num_projections: 1000
+max_iter_dswd: 100
+regularization_lambda_dswd: 1
+divergence_loss: ebsw
+# compile model for faster training with pytorch 2.0
+compile: True
+
+net:
+  _target_: src.models.components.unet.Unet
+  input_channels: 1
+  out_channels: 1
+
+optimizer: &adam_optimizer
+  _target_: dadaptation.DAdaptAdam
+  # _target_: torch.optim.Adam
+  _partial_: true
+  lr: 1
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.5
+  patience: 50
+
+input_channels: ${eval:'${model.net.input_channels}'}
+image_size: ${eval:'${data.im_size}'}
+cirtic_task:

@@ -1,0 +1,8 @@
+tensorboard:
+  _target_: lightning.pytorch.loggers.tensorboard.TensorBoardLogger
+  save_dir: "${paths.output_dir}/tensorboard/"
+  name: 'onr'
+  log_graph: False
+  default_hp_metric: False
+  prefix: ""
+  # version: ""

@@ -1,0 +1,11 @@
+_target_: src.data.birds_datamodule.PatchBirdsDataModule
+data_dir: '/lustre/cniel/data/CUB_200_2011/CUB_200_2011/images'
+mask_dir: '/lustre/cniel/data/segmentations/'
+batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+train_val_test_split: [ .7, .2, .1 ]
+num_workers: 4
+pin_memory: False
+patch_bg_size: .25
+im_size: [ 224,224 ]
+background_classifier: 
+n_patches: 5

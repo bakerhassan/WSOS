@@ -1,0 +1,15 @@
+_target_: src.data.fgbg_datamodule.AugmentForegroundTextureDataModule
+data_dir: ${paths.data_dir}
+n_augments: 5
+train_val_test_split: [ .7, .2, .1 ]
+num_workers: 4
+pin_memory: False
+im_size: [ 64,64 ]
+random_resizing_shifting: False
+dataset_type: dsprites
+batch_size: 100
+background_dir: /lustre/cniel/data/sas/sassed.h5
+background_type: 'sas'
+unify_fg_objects_intensity: false
+background_classifier:
+order_background_labels: true

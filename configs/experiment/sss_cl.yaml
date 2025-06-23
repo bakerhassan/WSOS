@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: sss_cl
+  - override /model: cl
+
+trainer:
+  devices: 1
+  max_epochs: 200
+
+
+model:
+  net:
+    input_channels: 1
+  clusters_list: [2,3,4,5,6,7,8,9,10,15]
+
+data:
+  batch_size: 2048
+  background_classifier:
+  order_background_labels: False
+  im_size: [64,64]
+  crop_size: [128,128]

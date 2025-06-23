@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: augment_fgbg
+  - override /model: cl
+
+trainer:
+  devices: 1
+  max_epochs: 200
+
+  
+model:
+  net:
+    input_channels: 1
+  clusters_list: [5,10,15]
+  
+
+data:
+  im_size: [64,64]
+  background_type: 'texture'
+  background_dir: ${paths.data_dir}/textures
+  

@@ -1,0 +1,13 @@
+_target_: src.data.fgbg_datamodule.ForegroundTextureDataModule
+data_dir: ${paths.data_dir}
+batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+train_val_test_split: [ .7, .2, .1 ]
+num_workers: 4
+pin_memory: False
+background_dir: ${paths.data_dir}/textures
+dataset_type: MNIST
+im_size: [ 64,64 ]
+random_resizing_shifting: False
+order_background_labels: False
+unify_fg_objects_intensity: False
+background_classifier: "/lustre/cniel/onr/logs/eval/runs/2024-06-21_08-43-52/ae_gmm/5"

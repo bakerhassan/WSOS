@@ -1,0 +1,9 @@
+_target_: src.data.texture_datamodule.TextureDataModule
+images_number: 70000
+texture_dir: ${paths.data_dir}/textures
+data_dir: ${paths.data_dir}
+im_size: [ 64,64 ]
+train_val_test_split: [.7, .2, .1]
+batch_size:  1024
+num_workers: 0
+pin_memory:  False

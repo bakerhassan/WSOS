@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: sas
+  - override /model: default
+
+trainer:
+  devices: 1
+  max_epochs: 100
+
+model:
+  net:
+    input_channels: 1
+  divergence_loss: ebsw
+  optimizer:
+    lr: 1
+  sw_encoder:
+  sw_encoder_checkpoint:
+  psudo_colormap: BuPu_r
+
+data:
+  background_classifier: /lustre/cniel/onr/logs/eval/runs/2025-02-11_19-02-03/ae_gmm/5
+  batch_size: 350

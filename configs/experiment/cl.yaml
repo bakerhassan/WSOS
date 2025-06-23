@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: cub_patches
+  - override /model: cl
+
+trainer:
+  devices: 1
+  max_epochs: 200
+
+  
+model:
+  net:
+    input_channels: 3
+  clusters_list: [5,10,15,20,30,40,50]
+  
+
+data:
+  background_classifier:
+  im_size: [64,64]
+  order_background_labels: False
+
+# ckpt_path: /lustre/cniel/onr/logs/train/runs/2024-06-26_11-50-12/checkpoints/epoch_124.ckpt

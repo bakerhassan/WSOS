@@ -1,0 +1,2 @@
+log_lr:
+  _target_: src.callbacks.log_lr_callback.LogLRCallback

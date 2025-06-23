@@ -1,0 +1,11 @@
+_target_: src.data.birds_datamodule.BaseBirdsDataModule
+data_dir: '/lustre/cniel/data/CUB_200_2011/CUB_200_2011/images'
+mask_dir: '/lustre/cniel/data/segmentations/'
+batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+train_val_test_split: [ .7, .2, .1 ]
+num_workers: 4
+pin_memory: False
+im_size: [ 224,224 ]
+# background_classifier: /lustre/cniel/onr/logs/eval/runs/2023-12-13_13-35-50/ae_gmm/500
+background_classifier: /lustre/cniel/onr/logs/train/runs/2024-05-13_14-35-59/ae_gmm/40
+order_background_labels: True

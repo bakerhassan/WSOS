@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: augment_fgbg
+  - override /model: cl
+
+trainer:
+  devices: 1
+  max_epochs: 200
+
+
+model:
+  net:
+    input_channels: 1
+  clusters_list: [2,3,4,5,6]
+
+
+data:
+  background_classifier:
+  im_size: [64,64]
+  order_background_labels: False

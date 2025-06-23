@@ -1,0 +1,40 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: sss
+  - override /model: sss
+
+trainer:
+  devices: 1
+  max_epochs: 150
+
+data:
+  batch_size: 400
+  #512
+  #background_classifier: /lustre/cniel/onr/logs/train/runs/2025-03-13_20-48-39/ae_gmm/4
+  #265
+  #background_classifier: /lustre/cniel/onr/logs/train/runs/2025-03-11_14-33-31/ae_gmm/4
+  #128
+  background_classifier: /lustre/cniel/onr/logs/train/runs/2025-03-14_03-51-33/ae_gmm/2 
+  order_background_labels: true
+  im_size: [64,64]
+  crop_size: [128,128]
+  
+model:
+  net:
+    input_channels: 1
+  divergence_loss: ebsw
+  scheduler:
+    patience: 20000
+  sw_encoder:
+  sw_encoder_checkpoint: 
+  psudo_colormap: BuPu_r
+
+  optimizer: &adam_optimizer
+    _target_: torch.optim.Adam
+    # _target_: dadaptation.DAdaptAdam
+    _partial_: true
+    lr: 1e-4
+    weight_decay: 0.0
+    

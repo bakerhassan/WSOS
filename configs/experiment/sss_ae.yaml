@@ -1,0 +1,26 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: sss
+  - override /model: ae
+
+trainer:
+  devices: 1
+  max_epochs: 500
+
+
+model:
+  net:
+    _target_: src.models.components.ae.DeepAE
+    input_channels: 1
+    latent_dim: 20
+  testing_dataset:
+  psudo_colormap: BuPu_r
+  clusters_list: [2,3,4,5,6,7,8,9,10,15]
+data:
+  batch_size: 400
+  background_classifier:
+  order_background_labels: False
+  im_size: [128,128]
+  crop_size: [128,128]

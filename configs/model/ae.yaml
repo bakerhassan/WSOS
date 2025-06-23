@@ -1,0 +1,51 @@
+_target_: src.models.ae_module.AEModule
+
+compile: True
+
+#TODO this should call u2net file or unet file.
+net:
+  _target_: src.models.components.ae.AE
+  input_channels: 1
+  input_dim: ${eval:'${data.im_size[0]}'}
+  latent_dim: 20
+
+testing_dataset:
+  _target_: src.data.fgbg_datamodule.ForegroundTextureDataModule
+  data_dir: ${paths.data_dir}
+  batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+  train_val_test_split: [ .7, .2, .1 ]
+  num_workers: 4
+  pin_memory: False
+  texture_dir: ${paths.data_dir}/textures
+  dataset_type: FashionMNIST
+  im_size: [ 64,64 ]
+  random_resizing_shifting: False
+  order_background_labels: False
+  unify_fg_objects_intensity: False
+  background_classifier:
+
+  # _target_: src.data.birds_datamodule.BirdsDataModule
+  # data_dir: '/lustre/cniel/data/CUB_200_2011/CUB_200_2011/images'
+  # mask_dir: '/lustre/cniel/data/segmentations/'
+  # batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+  # train_val_test_split: [ .7, .2, .1 ]
+  # num_workers: 4
+  # pin_memory: False
+  # im_size: [ 64,64 ]
+  # background_classifier:
+
+clusters_list: [5,10,15]
+optimizer: &adam_optimizer
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: .0001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.5
+  patience: 30
+
+type:

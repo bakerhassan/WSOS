@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /trainer: gpu
+  - override /data: mnist
+  - override /model: default
+
+trainer:
+  devices: 1
+  max_epochs: 50
+
+data:
+  order_background_labels: true
+
+model:
+  net:
+    input_channels: 1
+  divergence_loss: ebsw
+  optimizer:
+    lr: 1
+  sw_encoder: 
+  sw_encoder_checkpoint:
