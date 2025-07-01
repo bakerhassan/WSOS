@@ -3,7 +3,7 @@
 # Background-Conditional Weakly Supervised Object Segmentation  
 [Read the full paper](https://arxiv.org/abs/2506.22505)
 
-![My diagram](TMLR.png)
+![](TMLR.png)
 
 </div>
 
