@@ -1,7 +1,7 @@
 <div align="center">
 
-# Background-Conditional Weakly Supervised Object Segmentation  
-[Read the full paper](https://arxiv.org/abs/2506.22505)
+# Weakly Supervised Object Segmentation by Background Conditional Divergence 
+[Read the full paper](https://openreview.net/pdf?id=2JJZhfGvMW)
 
 ![](TMLR.png)
 
@@ -11,8 +11,7 @@
 
 ## Abstract
 
-As a computer vision task, automatic object segmentation remains challenging in specialized image domains without massive labeled data, such as synthetic aperture sonar images, remote sensing, biomedical imaging, etc. In any domain, obtaining pixel-wise segmentation masks is expensive. In this work, we propose a method for training a masking network to perform binary object segmentation using weak supervision in the form of image-wise presence or absence of an object of interest, which provides less information but may be obtained more quickly from manual or automatic labeling. A key step in our method is that the segmented objects can be placed into background-only images to create realistic images of the objects with counterfactual backgrounds. To create a contrast between the original and counterfactual background images, we propose to first cluster the background-only images, and then during learning create counterfactual images that blend objects segmented from their original source backgrounds to backgrounds chosen from a targeted cluster. One term in the training loss is the divergence between these counterfactual images and the real object images with backgrounds of the target cluster. The other term is a supervised loss for background-only images. While an adversarial critic could provide the divergence, we use sample-based divergences. We conduct experiments on side-scan and synthetic aperture sonar in which our approach succeeds compared to previous unsupervised segmentation baselines that were only tested on natural images. Furthermore, to show generality we extend our experiments to natural images, obtaining reasonable performance with our method that avoids pretrained networks, generative networks, and adversarial critics.
-
+As a computer vision task, automatic object segmentation remains challenging in specialized image domains without massive labeled data, such as synthetic aperture sonar images, remote sensing, biomedical imaging, etc. In any domain, obtaining pixel-wise segmentation masks is expensive. In this work, we propose a method for training a masking network to perform binary object segmentation using weak supervision in the form of image-wise presence or absence  of an object of interest, which provides less information but may be obtained more quickly from manual or automatic labeling. A key step in our method is that the segmented objects can be placed into background-only images to create realistic images of the objects with counterfactual backgrounds. To create a contrast between the original and counterfactual background images, we propose to first cluster the background-only images and then, during learning, create counterfactual images that blend objects segmented from their original source backgrounds to backgrounds chosen from a targeted cluster.  One term in the training loss is the divergence between these counterfactual images and the real object images with backgrounds of the target cluster. The other term is a supervised loss for  background-only images. While an adversarial critic could provide the divergence, we use sample-based divergences. We conduct experiments on side-scan and synthetic aperture sonar in which our approach succeeds compared to previous unsupervised segmentation baselines that were only tested on natural images. Furthermore, to show generality we extend our experiments to natural images, obtaining reasonable performance with our method that avoids pretrained networks, generative networks, and adversarial critics.
 <br>
 
 ## Data
@@ -163,4 +162,20 @@ The directory structure of new project looks like this:
 ├── requirements.txt          <- File for installing python dependencies
 ├── setup.py                  <- File for installing project as a package
 └── README.md
+```
+
+## Citation
+
+```
+@article{
+baker2025weakly,
+title={Weakly Supervised Object Segmentation by Background Conditional Divergence},
+author={Hassan Baker and Matthew Emigh and Austin J. Brockmeier},
+journal={Transactions on Machine Learning Research},
+issn={2835-8856},
+year={2025},
+url={https://openreview.net/forum?id=2JJZhfGvMW},
+note={}
+}
+
 ```
